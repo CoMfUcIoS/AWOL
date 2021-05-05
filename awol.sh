@@ -5,7 +5,7 @@ silent=$1
 readarray hosts <<< `cat /home/pi/awol/Hostlist`
 
 wakehost(){
-  for i in {1..10}; do sudo wakeonlan -i $2 $1 >/dev/null 2>&1; sleep 3; done
+  for i in {1..10}; do sudo wakeonlan -i $1 $2 >/dev/null 2>&1; done
   echoTime "Magic packages sent"
 }
 
