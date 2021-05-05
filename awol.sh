@@ -5,7 +5,7 @@ silent=$1
 readarray hosts <<< `cat /home/pi/awol/Hostlist`
 
 wakehost(){
-  for i in {1..10}; do wakeonlan $1 &> /dev/null; done
+  for i in {1..10}; do wakeonlan -i $2 $1 &> /dev/null; done
   echoTime "Magic packages sent"
 }
 
@@ -36,7 +36,7 @@ do
       if  [[ "${meta[2]}" == *"always"* ]]; then
         echoTime "$((i+1)). Host ${meta[0]} is down" 1
         echoTime "${meta[0]} is configed to be Always on, waking it up" 1
-        wakehost $mac
+        wakehost -i ${meta[1]} ${mac}
       else
         echoTime "   On Batteries... ignoring ${meta[0]}"
       fi
@@ -44,7 +44,7 @@ do
       if  [[ "${meta[2]}" != *"skip"* ]]; then
         echoTime "$((i+1)). Host ${meta[0]} is down" 1
         echoTime "We are online, sending wake on lan magic packages to ${meta[0]}" 1
-        wakehost $mac
+        wakehost -i ${meta[1]} ${mac}
       else
         echoTime "$((i+1)). Host ${meta[0]} is down"
         echoTime "${meta[0]} is configed to be skipped"
@@ -56,7 +56,7 @@ do
   echoLine
 done
 
-echoTime "Run Logrotate"
+echoTime "Running Logrotate..."
 logrotate /home/pi/awol/logrotate.conf --state /home/pi/awol/logrotate-state --verbose &> /dev/null
 echoTime "AWOL Script is finished"
 echoLine
