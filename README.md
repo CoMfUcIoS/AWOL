@@ -2,7 +2,7 @@
 
 A Script to run on a RPI zero to wake up machines if are dead depending on UPS status (On Batteries / On line)
 
-required
+requirements
 
 ```
 apt get install wakeonlan logrotate apcupsd -y
@@ -25,6 +25,8 @@ test3:10.0.20.5:skip|xx:xx:xx:xx:xx:xx
 ```
 
 Described as following
+title:ip:option|macaddress
+
 test = title
 10.0.20.111 = ip address of the host
 online|always|skip = Online will wake up the host only when ups isnt on batteries, always will wake up the host no matter what, skip will ignore waking the host and continue
