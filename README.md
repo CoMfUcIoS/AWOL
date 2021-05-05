@@ -1,6 +1,6 @@
 # AWOL
 
-A Script to run on a RPI zero to wake up machines if are dead depending on UPS status (On Batteries / On line)
+A Script to run on a RPI zero w to wake up machines if are dead depending on UPS status (On Batteries / On line)
 
 requirements
 
