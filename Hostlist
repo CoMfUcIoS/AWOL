@@ -1,0 +1,3 @@
+Firewall:192.168.1.1:always|xx:xx:xx:xx:xx:xx
+NAS:192.168.1.2:online|xx:xx:xx:xx:xx:xx
+Desktop:192.168.1.10:skip|xx:xx:xx:xx:xx:xx
